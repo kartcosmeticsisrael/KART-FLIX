@@ -1,0 +1,549 @@
+/* ================= VARIABLES ================= */
+:root {
+    /* Colors */
+    --bg-color: #08080a;
+    --bg-color-light: #121216;
+    --lime: #bcd700;
+    --lime-glow: rgba(188, 215, 0, 0.4);
+    --text-main: #ffffff;
+    --text-gray: #b0b0b3;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(20, 20, 25, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* Typography */
+    --font-he: 'Heebo', sans-serif;
+    --font-en: 'Outfit', sans-serif;
+
+    /* Layout */
+    --nav-height: 80px;
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ================= RESET & BASE ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-he);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.logo-text,
+.badge {
+    font-family: var(--font-en);
+    /* Mixed font handling in modern CSS can just use fallbacks, 
+       but we ensure numbers and english chars use Outfit. */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+/* Typography Helpers */
+.text-lime {
+    color: var(--lime);
+}
+
+.text-gray {
+    color: var(--text-gray);
+}
+
+/* ================= GLASSMORPHISM ================= */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-heavy {
+    background: rgba(15, 15, 20, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--lime);
+}
+
+/* ================= GATE OVERLAY ================= */
+.gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background: rgba(8, 8, 10, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.gate-content {
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    max-width: 90%;
+    width: 500px;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--lime);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--lime-glow);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px var(--lime-glow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Marketing Buttons Hover */
+#marketing .btn:hover {
+    background-color: var(--lime);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--lime-glow);
+}
+
+/* ================= HERO ================= */
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    margin-bottom: 2rem;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(8, 8, 10, 0.9) 0%,
+            rgba(8, 8, 10, 0.7) 40%,
+            rgba(8, 8, 10, 0.1) 100%);
+    /* For RTL, gradient usually goes right to left, but direction is rtl by default so degrees behave differently. Let's use standard direction */
+}
+
+html[dir="rtl"] .hero-overlay {
+    background: linear-gradient(270deg,
+            rgba(8, 8, 10, 0.95) 0%,
+            rgba(8, 8, 10, 0.6) 50%,
+            rgba(8, 8, 10, 0) 100%);
+}
+
+.hero-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to top, var(--bg-color), transparent);
+}
+
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+    margin-top: 50px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ================= LIBRARY CAROUSELS ================= */
+.library {
+    padding: 2rem 5% 5rem;
+}
+
+.category-row {
+    margin-bottom: 3.5rem;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-right: 0.5rem;
+    border-right: 4px solid var(--lime);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-arrow {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel-container:hover .carousel-arrow {
+    opacity: 1;
+}
+
+.carousel-arrow:hover {
+    background: var(--lime) !important;
+    color: var(--bg-color) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.video-card {
+    min-width: 320px;
+    max-width: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    transform-origin: center right;
+    /* for RTL scale from center */
+}
+
+/* Hover Effect */
+.video-card:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+}
+
+.video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.video-card:hover .video-thumb img {
+    transform: scale(1.1);
+}
+
+.thumb-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.2rem;
+    transition: var(--transition);
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--lime);
+    color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: var(--transition);
+    box-shadow: 0 0 15px var(--lime-glow);
+}
+
+.video-card:hover .play-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    /* Hidden by default, revealed on hover */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.video-card:hover .card-desc {
+    max-height: 60px;
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+
+/* ================= MODAL PLAYER ================= */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 2001;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.btn-close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    /* left side for RTL */
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.btn-close:hover {
+    background: var(--lime);
+    color: var(--bg-color);
+    transform: rotate(90deg);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-info {
+    padding: 1.5rem 2rem;
+    background: var(--glass-bg);
+}
+
+.modal-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-main);
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .video-card {
+        min-width: 260px;
+        max-width: 260px;
+    }
+
+    .nav-links {
+        display: none;
+        /* simple mobile approach */
+    }
+}
