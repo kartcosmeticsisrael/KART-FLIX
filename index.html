@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KART-FLIX | ספריית הדרכות וידאו</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Heebo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png?v=2">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar glass-effect" style="padding-top: 0; padding-bottom: 0;">
+        <div class="nav-brand" style="display: flex; align-items: center; height: 100%;">
+            <img src="assets/logo.png" alt="KART-FLIX" style="height: 100px; max-height: 100px; object-fit: contain;">
+        </div>
+        <nav class="nav-links">
+            <a href="#hero">ראשי</a>
+            <a href="#library">ספריית טיפולים</a>
+            <a href="#marketing">מאגר תוכן לפרסום</a>
+        </nav>
+        <div id="daysLeftContainer"
+            style="background: black; border: 1px solid #FFD700; color: #FFD700; padding: 5px 15px; border-radius: 20px; font-weight: bold; display: none;">
+            נותרו לך עוד <span id="daysLeftCount"></span> ימים לצפייה בתכני ההדרכה
+        </div>
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <select id="langSelect" class="glass-effect"
+                    style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 20px; font-family: 'Heebo', sans-serif; cursor: pointer; outline: none;">
+                    <option value="he" style="color: black;">עברית</option>
+                    <option value="ru" style="color: black;">Русский</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg">
+            <img src="assets/thumbnails/anti_aging.png" alt="Hero Background" style="object-position: center 20%;">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <span class="badge">הדרכה מומלצת</span>
+            <h1 class="hero-title">הדור הבא של<br><span class="text-lime">טיפולי האנטי-אייג'ינג</span></h1>
+            <p class="hero-desc">למדי את הפרוטוקולים החדשניים ביותר של 2026 עם מיטב המומחים של KART. צפי בהדגמות מעשיות
+                וגלי טכניקות פורצות דרך.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" id="heroPlayBtn"
+                    data-drive-url="https://drive.google.com/file/d/1GidfWqbZ7rSAqfgrLdfmOkQtbiJQhko-/preview?rm=minimal">
+                    <i class="fas fa-play"></i> צפייה עכשיו
+                </button>
+                <button class="btn btn-secondary glass-effect">
+                    <i class="fas fa-info-circle"></i> מידע נוסף
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section id="search-section" style="padding: 20px 5%; display: flex; justify-content: center;">
+        <div class="search-wrapper" style="position: relative; width: 100%; max-width: 600px;">
+            <i class="fas fa-search"
+                style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.6);"></i>
+            <input type="text" id="searchInput" placeholder="חיפוש לפי בעיה רפואית (למשל: פטרת, ציפורן חודרנית)..."
+                style="width: 100%; padding: 15px 45px 15px 15px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: white; font-family: 'Heebo', sans-serif; font-size: 1.1em; outline: none; transition: all 0.3s ease;">
+        </div>
+    </section>
+
+    <!-- Video Library Categories -->
+    <section id="library" class="library">
+        <div id="categoriesContainer">
+            <!-- Filled dynamically by script.js -->
+        </div>
+    </section>
+
+    <!-- Marketing Content -->
+    <section id="marketing" class="marketing glass-effect"
+        style="margin: 40px 5%; padding: 40px; border-radius: 20px; text-align: center;">
+        <h2 style="font-size: 2.5em; margin-bottom: 30px; color: var(--primary-lime);">מאגר תוכן לפרסום</h2>
+        <p style="margin-bottom: 30px; font-size: 1.2em; color: rgba(255,255,255,0.8);">הורד חומרים שיווקיים, תמונות
+            וסרטונים לשימוש ברשתות החברתיות.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="https://drive.google.com/drive/folders/1z1WUolR-nZZa14GAC2VbxtQF2NYUjdix?usp=drive_link"
+                target="_blank" class="btn btn-secondary glass-effect"
+                style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <i class="fab fa-google-drive"></i> תוכן פדיקור
+            </a>
+            <a href="https://drive.google.com/drive/folders/1TdpJ-iGlWNtT_c1P5JsxD0K5eAi3ZV2F?usp=drive_link"
+                target="_blank" class="btn btn-secondary glass-effect"
+                style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <i class="fab fa-google-drive"></i> תוכן קוסמטיקה
+            </a>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-heavy">
+            <button id="closeModal" class="btn-close"><i class="fas fa-times"></i></button>
+            <div class="video-wrapper">
+                <iframe id="videoIframe" src="" width="100%" height="100%" frameborder="0"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="modal-info" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h3 id="modalTitle">כותרת הסרטון</h3>
+                    <p id="modalDesc" class="text-gray">תיאור קצר של הסרטון שמוצג כעת בנגן.</p>
+                </div>
+                <a id="protocolBtn" href="#" target="_blank" class="btn btn-primary"
+                    style="display: none; align-items: center; gap: 8px; text-decoration: none;">
+                    <i class="fas fa-file-pdf"></i> פרוטוקול טיפול
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gate / Password Overlay -->
+    <div id="gateOverlay" class="gate-overlay glass-heavy">
+        <div class="gate-content">
+            <img src="assets/logo.png" alt="KART-FLIX"
+                style="height: 120px; max-height: 120px; object-fit: contain; margin-bottom: 30px;">
+            <div id="gateLoginSection">
+                <h2 style="margin-bottom: 20px;">הכניסה לספריית ההדרכות למורשות בלבד</h2>
+                <input type="password" id="gatePassword" placeholder="הקלידי סיסמה..."
+                    style="width: 100%; max-width: 300px; padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; font-family: 'Heebo', sans-serif; font-size: 1.1em; outline: none; margin-bottom: 15px; text-align: center;">
+                <br>
+                <button id="gateSubmitBtn" class="btn btn-primary"
+                    style="width: 100%; max-width: 300px; justify-content: center;">כניסה לספריה</button>
+                <p id="gateErrorMsg" style="color: #ff6b6b; margin-top: 15px; font-weight: bold; display: none;">סיסמה
+                    שגויה, נסי שוב.</p>
+            </div>
+            <div id="gateExpiredSection" style="display: none;">
+                <h2 style="color: #ff6b6b; margin-bottom: 15px;">תקופת ההדרכה הסתיימה.</h2>
+                <p style="font-size: 1.2em;">לפרטים נוספים פני למנהלת.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="videos_config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
