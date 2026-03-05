@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gateExpiredSection.style.display = 'none';
 
             function tryLogin() {
-                if (gatePassword.value === 'KARTlearn2026') {
+                if (gatePassword.value.trim() === 'KARTlearn2026') {
                     localStorage.setItem('kartflix_unlocked', 'true');
                     gateOverlay.style.display = 'none';
                     daysLeftContainer.style.display = 'block';
